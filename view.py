@@ -48,18 +48,29 @@ class View(Tk):
         self.menu_label = Label(self, text=label_text,
                                 font=self.FONT)
         self.menu_label.pack()
+        self.buttons=[]
         x=50
         y=100
         for i in range(len(self.CATEGORYS)):
-            botton = Button(self,text=self.CATEGORYS[i],
+            button = Button(self,text=self.CATEGORYS[i],
                             command=lambda i=i:self.set_category(
                 self.CATEGORYS[i] ), font=self.FONT)
-            botton.place(x=x,y=y)
+            button.place(x=x,y=y)
+            self.buttons.append(button)
             y+=80
             if i==4:
                 x=275
                 y=100
 
-    def set_category(self, category) -> None:
-        print(category)
+    def set_category(self, category:str) -> None:
+        self.category=category
+        self.menu_label.destroy()
+        for butt in self.buttons:
+            butt.destroy()
+
+    def start_game(self, guess_word:str,lifes:int) -> None: 
+        label_text=str(lifes)
+        self.life_counter=Label(self, text=label_text)
+        self.life_counter.pack()
+        
 teste = View()
