@@ -20,5 +20,3 @@ class Controller():
 
     def lose_won(self) -> bool:
         pass
-
-    def 
